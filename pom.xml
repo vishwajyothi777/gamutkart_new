@@ -6,9 +6,6 @@
 	<artifactId>gamutkart</artifactId>
 	<packaging>war</packaging>
 	<version>1.1-SNAPSHOT</version>
-	<configuration>
-            <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
-        </configuration>
 
 	<properties>
      		<maven.compiler.source>1.8</maven.compiler.source>
