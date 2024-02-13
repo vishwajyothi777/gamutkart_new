@@ -14,25 +14,16 @@ pipeline {
 	        	checkout scm
 	    	}
         }
-
-        stage('Build') {
-            steps {
-                sh 'mvn install -Dmaven.test.skip=true'
-            }
-        }
+	    
 	stage('Compile') {
             steps {
                 sh 'mvn install compile'
             }
         }
-	stage('Run Test') {
+	    
+        stage('Build') {
             steps {
-                sh 'mvn test'
-            }
-        }
-	stage('Package as war') {
-            steps {
-                sh 'mvn package'
+                sh 'mvn install -Dmaven.test.skip=true'
             }
         }
 		
@@ -41,6 +32,12 @@ pipeline {
                 sh 'mvn compiler:testCompile'
                 sh 'mvn surefire:test'
                 junit 'target/**/*.xml'
+            }
+        }
+	    
+	stage('Package as war') {
+            steps {
+                sh 'mvn package'
             }
         }
 
