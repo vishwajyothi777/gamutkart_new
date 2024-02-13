@@ -20,6 +20,21 @@ pipeline {
                 sh 'mvn install -Dmaven.test.skip=true'
             }
         }
+	stage('Compile') {
+            steps {
+                sh 'mvn install compile'
+            }
+        }
+	stage('Run Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+	stage('Package as war') {
+            steps {
+                sh 'mvn package'
+            }
+        }
 		
         stage('Unit Tests') {
             steps {
